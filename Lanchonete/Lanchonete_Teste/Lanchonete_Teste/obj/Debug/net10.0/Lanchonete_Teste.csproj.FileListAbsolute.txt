@@ -1,0 +1,16 @@
+C:\Users\hugoc\Documents\Hugo - Senai_Back-End\Lanchonete\Lanchonete_Teste\Lanchonete_Teste\obj\Debug\net10.0\Lanchonete_Teste.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hugoc\Documents\Hugo - Senai_Back-End\Lanchonete\Lanchonete_Teste\Lanchonete_Teste\obj\Debug\net10.0\Lanchonete_Teste.AssemblyInfoInputs.cache
+C:\Users\hugoc\Documents\Hugo - Senai_Back-End\Lanchonete\Lanchonete_Teste\Lanchonete_Teste\obj\Debug\net10.0\Lanchonete_Teste.AssemblyInfo.cs
+C:\Users\hugoc\Documents\Hugo - Senai_Back-End\Lanchonete\Lanchonete_Teste\Lanchonete_Teste\obj\Debug\net10.0\Lanchonete_Teste.csproj.CoreCompileInputs.cache
+C:\Users\hugoc\Documents\Hugo - Senai_Back-End\Lanchonete\Lanchonete_Teste\Lanchonete_Teste\obj\Debug\net10.0\Lanchonete_Teste.sourcelink.json
+C:\Users\hugoc\Documents\Hugo - Senai_Back-End\Lanchonete\Lanchonete_Teste\Lanchonete_Teste\bin\Debug\net10.0\Lanchonete_Teste.exe
+C:\Users\hugoc\Documents\Hugo - Senai_Back-End\Lanchonete\Lanchonete_Teste\Lanchonete_Teste\bin\Debug\net10.0\Lanchonete_Teste.deps.json
+C:\Users\hugoc\Documents\Hugo - Senai_Back-End\Lanchonete\Lanchonete_Teste\Lanchonete_Teste\bin\Debug\net10.0\Lanchonete_Teste.runtimeconfig.json
+C:\Users\hugoc\Documents\Hugo - Senai_Back-End\Lanchonete\Lanchonete_Teste\Lanchonete_Teste\bin\Debug\net10.0\Lanchonete_Teste.dll
+C:\Users\hugoc\Documents\Hugo - Senai_Back-End\Lanchonete\Lanchonete_Teste\Lanchonete_Teste\bin\Debug\net10.0\Lanchonete_Teste.pdb
+C:\Users\hugoc\Documents\Hugo - Senai_Back-End\Lanchonete\Lanchonete_Teste\Lanchonete_Teste\obj\Debug\net10.0\Lanchonete_Teste.dll
+C:\Users\hugoc\Documents\Hugo - Senai_Back-End\Lanchonete\Lanchonete_Teste\Lanchonete_Teste\obj\Debug\net10.0\refint\Lanchonete_Teste.dll
+C:\Users\hugoc\Documents\Hugo - Senai_Back-End\Lanchonete\Lanchonete_Teste\Lanchonete_Teste\obj\Debug\net10.0\Lanchonete_Teste.pdb
+C:\Users\hugoc\Documents\Hugo - Senai_Back-End\Lanchonete\Lanchonete_Teste\Lanchonete_Teste\obj\Debug\net10.0\Lanchonete_Teste.genruntimeconfig.cache
+C:\Users\hugoc\Documents\Hugo - Senai_Back-End\Lanchonete\Lanchonete_Teste\Lanchonete_Teste\obj\Debug\net10.0\ref\Lanchonete_Teste.dll
+C:\Users\hugoc\Documents\Hugo - Senai_Back-End\Lanchonete\Lanchonete_Teste\Lanchonete_Teste\obj\Debug\net10.0\Lanchone.56D5797A.Up2Date
