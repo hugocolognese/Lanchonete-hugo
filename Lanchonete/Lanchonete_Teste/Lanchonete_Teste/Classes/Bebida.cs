@@ -98,19 +98,16 @@ namespace Lanchonete_Teste.Classes
                 Console.WriteLine("mais bebida?(sim/sair)");
                 resposta = Console.ReadLine();
 
-                Console.WriteLine("1- Morango");
-                Console.WriteLine("2- Manga");
-                Console.WriteLine("3- Uva");
-                this.Descricao = Console.ReadLine();
-
                 Console.WriteLine("qual o tamanho? (1l, 500ml, 300ml)");
                 this.Tamanho = Console.ReadLine();
                 this.Tamanho = "500ml";
                 this.Tamanho = "1L";
                 this.Tamanho = "300ml";
+
+                
             }
 
-            if(resposta == "sair")
+            if (resposta == "sair")
             {
                 Program.MenuPrincipal();
             }

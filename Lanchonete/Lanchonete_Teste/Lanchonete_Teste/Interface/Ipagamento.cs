@@ -6,6 +6,7 @@ namespace Lanchonete_Teste.Interface
 {
     public interface Ipagamento
     {
-
+        bool ValidarPagamento();
+        string ObbterDescricaoPagamento();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Lanchonete_Teste.Classes;
+using Lanchonete_Teste.Interface;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Lanchonete_Teste
@@ -41,6 +42,7 @@ namespace Lanchonete_Teste
                     break;
 
                 case 3:
+                    Ipagamento pagamento;
 
                     break;
             }
