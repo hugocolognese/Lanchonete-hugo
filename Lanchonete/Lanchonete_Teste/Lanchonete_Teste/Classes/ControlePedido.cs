@@ -6,16 +6,16 @@ namespace Lanchonete_Teste.Classes
 {
     public class ControlePedido
     {
-        public List<ItemCardapio> itens = new List<ItemCardapio>();
+        public List<ItemCardapio> itensLanche = new List<ItemCardapio>();
 
         public ControlePedido()
         {
-            itens = new List<ItemCardapio>();
+            itensLanche = new List<ItemCardapio>();
         }
 
         public void AdicionarPedido(ItemCardapio item)
         {
-            itens.Add(item);
+            itensLanche.Add(item);
             Console.WriteLine("item adicionado no carrinho");
         }
 
@@ -24,11 +24,16 @@ namespace Lanchonete_Teste.Classes
             decimal total = 0;
             Console.WriteLine("PEDIDO");
 
-            foreach (var item in itens)
+            foreach(var item in itensLanche)
             {
-                decimal precoFinal = item.CalcularPrecoFinal();
-                Console.WriteLine($"item: {item.Descricao}  preco: {precoFinal}");
-                total += precoFinal;
+                if (item is Lanche lanche)
+                {
+                    Console.WriteLine($"lanche: {lanche.Descricao} preco: {lanche.CalcularPrecoFinal()}");
+                }
+                else if (item is Bebida bebida)
+                {
+                    Console.WriteLine($"bebida: {bebida.Descricao} preco: {bebida.CalcularPrecoFinal()}");
+                }
             }
 
     }

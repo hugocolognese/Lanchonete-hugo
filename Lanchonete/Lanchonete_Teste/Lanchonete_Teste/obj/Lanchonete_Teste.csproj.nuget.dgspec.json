@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hugoc\\Documents\\Hugo - Senai_Back-End\\Lanchonete\\Lanchonete_Teste\\Lanchonete_Teste\\Lanchonete_Teste.csproj": {}
+    "C:\\Users\\232.002829\\source\\repos\\Lanchonete-hugo\\Lanchonete\\Lanchonete_Teste\\Lanchonete_Teste\\Lanchonete_Teste.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hugoc\\Documents\\Hugo - Senai_Back-End\\Lanchonete\\Lanchonete_Teste\\Lanchonete_Teste\\Lanchonete_Teste.csproj": {
+    "C:\\Users\\232.002829\\source\\repos\\Lanchonete-hugo\\Lanchonete\\Lanchonete_Teste\\Lanchonete_Teste\\Lanchonete_Teste.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hugoc\\Documents\\Hugo - Senai_Back-End\\Lanchonete\\Lanchonete_Teste\\Lanchonete_Teste\\Lanchonete_Teste.csproj",
+        "projectUniqueName": "C:\\Users\\232.002829\\source\\repos\\Lanchonete-hugo\\Lanchonete\\Lanchonete_Teste\\Lanchonete_Teste\\Lanchonete_Teste.csproj",
         "projectName": "Lanchonete_Teste",
-        "projectPath": "C:\\Users\\hugoc\\Documents\\Hugo - Senai_Back-End\\Lanchonete\\Lanchonete_Teste\\Lanchonete_Teste\\Lanchonete_Teste.csproj",
-        "packagesPath": "C:\\Users\\hugoc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hugoc\\Documents\\Hugo - Senai_Back-End\\Lanchonete\\Lanchonete_Teste\\Lanchonete_Teste\\obj\\",
+        "projectPath": "C:\\Users\\232.002829\\source\\repos\\Lanchonete-hugo\\Lanchonete\\Lanchonete_Teste\\Lanchonete_Teste\\Lanchonete_Teste.csproj",
+        "packagesPath": "C:\\Users\\232.002829\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\232.002829\\source\\repos\\Lanchonete-hugo\\Lanchonete\\Lanchonete_Teste\\Lanchonete_Teste\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\hugoc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\232.002829\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -46,7 +46,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.400"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net10.0": {
@@ -68,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.401/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

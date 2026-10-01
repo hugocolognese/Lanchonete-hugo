@@ -3,7 +3,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Lanchonete_Teste
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -27,11 +27,17 @@ namespace Lanchonete_Teste
                     Lanche lanche = new Lanche(01, "lanche", 15m);
                     lanche.MenuLanches();
                     lanche.CalcularPrecoFinal();
+                    ControlePedido controlePedidoLanche = new ControlePedido();
+                    controlePedidoLanche.AdicionarPedido(lanche);
+                    controlePedidoLanche.FecharPedido();
                     break;
                 case 2:
                     Bebida bebida = new Bebida(02, "bebida", 15m);
                     bebida.MenuBebida();
                     bebida.CalcularPrecoFinal();
+                    ControlePedido controlePedidoBebida = new ControlePedido();
+                    controlePedidoBebida.AdicionarPedido(bebida);
+                    controlePedidoBebida.FecharPedido();
                     break;
 
                 case 3:

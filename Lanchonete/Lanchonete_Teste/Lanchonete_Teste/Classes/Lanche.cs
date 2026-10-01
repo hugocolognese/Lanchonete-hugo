@@ -19,6 +19,7 @@ namespace Lanchonete_Teste.Classes
             Console.WriteLine("1- X-Bacon");
             Console.WriteLine("2- x-ovo");
             Console.WriteLine("3- hamburguer");
+            Console.WriteLine("4- bebida");
             string inputOpcao = Console.ReadLine();
 
             int.TryParse(inputOpcao, out int opcao);
@@ -38,6 +39,13 @@ namespace Lanchonete_Teste.Classes
                     this.Descricao = "Hambúrguer";
                     this.PrecoBase = 12.00m;
                     break;
+                case 4:
+                    Bebida bebida = new Bebida(02, "bebida", 15m);
+                    bebida.MenuBebida();
+                    break;
+                case 5:
+                    Console.WriteLine("Saindo do menu de lanches...");
+                    break;
                 default:
                     Console.WriteLine("Opção inválida!");
                     this.Descricao = "Hambúrguer";
@@ -45,20 +53,24 @@ namespace Lanchonete_Teste.Classes
                     break;
             }
 
-            Console.Write("Deseja adicionar algum ingrediente extra por R$ 3,50 cada? (sim/nao): ");
-            string querExtra = Console.ReadLine();
+            Console.Write("Deseja adicionar algum ingrediente extra ou bebida?(extra/sair) ");
+            string resposta = Console.ReadLine();
 
-            while (querExtra == "sim")
+            while(resposta == "extra")
             {
-                Console.Write("Digite o nome do ingrediente extra: ");
-                string ingrediente = Console.ReadLine();
+                Console.Write("Digite o ingrediente extra: ");
+                string ingredienteExtra = Console.ReadLine();
+                AdicionarExtra(ingredienteExtra);
+                Console.Write("Deseja adicionar mais algum ingrediente extra? (extra/sair) ");
+                resposta = Console.ReadLine();
 
-                // Chamamos o método que criaste
-                AdicionarExtra(ingrediente);
+                }
 
-                Console.Write("Deseja adicionar mais algum extra? (sim/nao): ");
-                querExtra = Console.ReadLine();
+            if (resposta == "sair")
+            {
+                Program.MenuPrincipal();
             }
+
         }
 
 
