@@ -7,10 +7,12 @@ namespace Lanchonete_Teste.Classes
     public class ControlePedido
     {
         public List<ItemCardapio> itensLanche = new List<ItemCardapio>();
+        public List<ItemCardapio> itensBebida = new List<ItemCardapio>();
 
         public ControlePedido()
         {
             itensLanche = new List<ItemCardapio>();
+            itensBebida = new List<ItemCardapio>();
         }
 
         public void AdicionarPedido(ItemCardapio item)
@@ -26,16 +28,16 @@ namespace Lanchonete_Teste.Classes
 
             foreach(var item in itensLanche)
             {
-                if (item is Lanche lanche)
-                {
-                    Console.WriteLine($"lanche: {lanche.Descricao} preco: {lanche.CalcularPrecoFinal()}");
-                }
-                else if (item is Bebida bebida)
-                {
-                    Console.WriteLine($"bebida: {bebida.Descricao} preco: {bebida.CalcularPrecoFinal()}");
-                }
+                              
+                    Console.WriteLine($"lanche: {item.Descricao} preco: {item.CalcularPrecoFinal()}");
+                
+            }
+            foreach (var item in itensBebida)
+            {
+                Console.WriteLine($"bebida: {item.Descricao} preco: {item.CalcularPrecoFinal()}");
             }
 
-    }
+
+        }
 }
 }
