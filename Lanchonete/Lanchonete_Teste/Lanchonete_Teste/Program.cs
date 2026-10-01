@@ -14,37 +14,45 @@ namespace Lanchonete_Teste
 
         public static void MenuPrincipal()
         {
-            string inputOpcao;
-            Console.WriteLine("1- Cardapio Lanches");
-            Console.WriteLine("2- Cardapio Bebidas");
-            Console.WriteLine("3- Pagamento");
-            inputOpcao = Console.ReadLine();
+            Console.WriteLine("=============================================");
+            Console.WriteLine("             LANCHONETE DO HUGO              ");
+            Console.WriteLine("=============================================");
+            Console.WriteLine(" 1- Cardápio de Lanches");
+            Console.WriteLine(" 2- Cardápio de Bebidas");
+            Console.WriteLine(" 3- Fechar Pedido");
+            Console.WriteLine("4- Pagar");
+            Console.WriteLine("=============================================");
+            Console.Write("Escolha uma opção: ");
 
+            string inputOpcao = Console.ReadLine();
             int.TryParse(inputOpcao, out int opcao);
 
             switch (opcao)
             {
                 case 1:
                     Lanche lanche = new Lanche(01, "lanche", 15m);
-                    lanche.MenuLanches();
-                    lanche.CalcularPrecoFinal();
                     ControlePedido controlePedidoLanche = new ControlePedido();
+                    lanche.MenuLanches();
                     controlePedidoLanche.AdicionarPedido(lanche);
                     controlePedidoLanche.FecharPedido();
+                    lanche.CalcularPrecoFinal();
                     break;
                 case 2:
                     Bebida bebida = new Bebida(02, "bebida", 15m);
-                    bebida.MenuBebida();
-                    bebida.CalcularPrecoFinal();
                     ControlePedido controlePedidoBebida = new ControlePedido();
+                    bebida.MenuBebida();
                     controlePedidoBebida.AdicionarPedido(bebida);
                     controlePedidoBebida.FecharPedido();
+                    bebida.CalcularPrecoFinal();
                     break;
 
                 case 3:
-                    Ipagamento pagamento;
-
+                    Pagamento pagamento = new Pagamento(0m);
+                    pagamento.ProcessarPagamento();
+                    MenuPrincipal();
+                    
                     break;
+
             }
 
         }

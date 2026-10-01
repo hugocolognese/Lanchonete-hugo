@@ -18,5 +18,7 @@ namespace Lanchonete_Teste.Classes
         }
 
         public abstract decimal CalcularPrecoFinal();
+
+
     }
 }

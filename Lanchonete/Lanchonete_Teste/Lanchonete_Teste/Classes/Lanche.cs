@@ -20,7 +20,7 @@ namespace Lanchonete_Teste.Classes
             Console.WriteLine("1- X-Bacon");
             Console.WriteLine("2- x-ovo");
             Console.WriteLine("3- hamburguer");
-            Console.WriteLine("4- bebida");
+            Console.WriteLine("4- sair");
             string inputOpcao = Console.ReadLine();
 
             int.TryParse(inputOpcao, out int opcao);
@@ -42,10 +42,6 @@ namespace Lanchonete_Teste.Classes
                     this.PrecoBase = 12.00m;
                     break;
                 case 4:
-                    Bebida bebida = new Bebida(02, "bebida", 15m);
-                    bebida.MenuBebida();
-                    break;
-                case 5:
                     Console.WriteLine("Saindo do menu de lanches...");
                     break;
                 default:

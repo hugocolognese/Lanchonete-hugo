@@ -6,38 +6,60 @@ namespace Lanchonete_Teste.Classes
 {
     public class ControlePedido
     {
-        public List<ItemCardapio> itensLanche = new List<ItemCardapio>();
-        public List<ItemCardapio> itensBebida = new List<ItemCardapio>();
+        public List<ItemCardapio> itensPedido = new List<ItemCardapio>();
 
         public ControlePedido()
         {
-            itensLanche = new List<ItemCardapio>();
-            itensBebida = new List<ItemCardapio>();
+            itensPedido = new List<ItemCardapio>();
         }
 
         public void AdicionarPedido(ItemCardapio item)
         {
-            itensLanche.Add(item);
+            itensPedido.Add(item);
             Console.WriteLine("item adicionado no carrinho");
         }
 
         public void FecharPedido()
         {
-            decimal total = 0;
-            Console.WriteLine("PEDIDO");
+            Console.Clear();
 
-            foreach(var item in itensLanche)
+            Console.WriteLine("=============================================");
+            Console.WriteLine("                 NOTA FISCAL                 ");
+            Console.WriteLine("=============================================");
+            Console.WriteLine(String.Format("{0,-30} | {1}", "PRODUTO", "PREÇO"));
+            Console.WriteLine("---------------------------------------------");
+
+            decimal totalGeral = 0;
+
+            
+            foreach (var item in itensPedido)
             {
-                              
-                    Console.WriteLine($"lanche: {item.Descricao} preco: {item.CalcularPrecoFinal()}");
+                decimal precoItem = item.CalcularPrecoFinal();
+                totalGeral += precoItem;
+
+                string nomeProduto = item.Descricao;
+
                 
-            }
-            foreach (var item in itensBebida)
-            {
-                Console.WriteLine($"bebida: {item.Descricao} preco: {item.CalcularPrecoFinal()}");
+                if (item is Bebida bebida)
+                {
+                    nomeProduto += $" ({bebida.Tamanho})";
+                }
+
+                
+                Console.WriteLine( $"Nome: {nomeProduto} {precoItem}");
+
+                Console.WriteLine("=============================");
+                Console.WriteLine( "TOTAL A PAGAR", totalGeral);
+                Console.WriteLine("=============================\n");
+
+                
+                Console.WriteLine("Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+                Console.Clear();
+                Program.MenuPrincipal();
             }
 
 
         }
-}
+    }
 }
