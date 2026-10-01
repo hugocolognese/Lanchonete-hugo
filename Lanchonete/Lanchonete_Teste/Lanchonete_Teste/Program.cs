@@ -1,61 +1,92 @@
-﻿using Lanchonete_Teste.Classes;
-using Lanchonete_Teste.Interface;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using Lanchonete_Teste.Classes;
 
 namespace Lanchonete_Teste
 {
     public class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            MenuPrincipal();
-            
-        }
+            ControlePedido pedido = new ControlePedido();
 
-        public static void MenuPrincipal()
-        {
-            Console.WriteLine("=============================================");
-            Console.WriteLine("             LANCHONETE DO HUGO              ");
-            Console.WriteLine("=============================================");
-            Console.WriteLine(" 1- Cardápio de Lanches");
-            Console.WriteLine(" 2- Cardápio de Bebidas");
-            Console.WriteLine(" 3- Fechar Pedido");
-            Console.WriteLine("4- Pagar");
-            Console.WriteLine("=============================================");
-            Console.Write("Escolha uma opção: ");
-
-            string inputOpcao = Console.ReadLine();
-            int.TryParse(inputOpcao, out int opcao);
-
-            switch (opcao)
+            while (true)
             {
-                case 1:
-                    Lanche lanche = new Lanche(01, "lanche", 15m);
-                    ControlePedido controlePedidoLanche = new ControlePedido();
-                    lanche.MenuLanches();
-                    controlePedidoLanche.AdicionarPedido(lanche);
-                    controlePedidoLanche.FecharPedido();
-                    lanche.CalcularPrecoFinal();
-                    break;
-                case 2:
-                    Bebida bebida = new Bebida(02, "bebida", 15m);
-                    ControlePedido controlePedidoBebida = new ControlePedido();
-                    bebida.MenuBebida();
-                    controlePedidoBebida.AdicionarPedido(bebida);
-                    controlePedidoBebida.FecharPedido();
-                    bebida.CalcularPrecoFinal();
-                    break;
+                try
+                {
+                    Console.Clear();
+                    Console.WriteLine("\n========= LANCHONETE DO HUGO =========");
+                    Console.WriteLine("1 - Adicionar lanche");
+                    Console.WriteLine("2 - Adicionar bebida");
+                    Console.WriteLine("3 - Ver pedido");
+                    Console.WriteLine("4 - Pagar no caixa");
+                    Console.WriteLine("0 - Sair");
+                    Console.Write("Escolha uma opção usando as teclas: ");
 
-                case 3:
-                    Pagamento pagamento = new Pagamento(0m);
-                    pagamento.ProcessarPagamento();
-                    MenuPrincipal();
-                    
-                    break;
+                    char opcao = Console.ReadKey(true).KeyChar;
 
+                    if (opcao == '1')
+                    {
+                        Lanche lanche = new Lanche(1, "Lanche", 0m);
+                        lanche.MenuLanches();
+                        pedido.AdicionarPedido(lanche);
+                        Console.WriteLine("Lanche adicionado ao pedido.");
+                        Console.WriteLine("Pressione qualquer tecla para continuar.");
+                        Console.ReadKey(true);
+                    }
+                    else if (opcao == '2')
+                    {
+                        Bebida bebida = new Bebida(2, "Bebida", 0m);
+                        bebida.MenuBebida();
+                        pedido.AdicionarPedido(bebida);
+                        Console.WriteLine("Bebida adicionada ao pedido.");
+                        Console.WriteLine("Pressione qualquer tecla para continuar.");
+                        Console.ReadKey(true);
+                    }
+                    else if (opcao == '3')
+                    {
+                        Console.Clear();
+                        pedido.FecharPedido();
+                        Console.WriteLine("Pressione qualquer tecla para voltar ao menu.");
+                        Console.ReadKey(true);
+                    }
+                    else if (opcao == '4')
+                    {
+                        decimal total = pedido.ObterTotal();
+                        if (total == 0m)
+                        {
+                            Console.WriteLine("Adicione pelo menos um produto antes de pagar.");
+                            Console.ReadKey(true);
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            pedido.FecharPedido();
+                            Console.WriteLine("Pressione qualquer tecla para escolher a forma de pagamento.");
+                            Console.ReadKey(true);
+                            Console.Clear();
+                            Pagamento pagamento = new Pagamento(total);
+                            pagamento.ProcessarPagamento();
+                            pedido.Limpar();
+                            Console.WriteLine("Pedido pago. Pressione qualquer tecla para continuar.");
+                            Console.ReadKey(true);
+                        }
+                    }
+                    else if (opcao == '0')
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Opção inválida. Pressione qualquer tecla para tentar novamente.");
+                        Console.ReadKey(true);
+                    }
+                }
+                catch (Exception erro)
+                {
+                    Console.WriteLine("Ocorreu um erro: " + erro.Message);
+                    Console.WriteLine("Pressione qualquer tecla para voltar ao menu.");
+                    Console.ReadKey(true);
+                }
             }
-
         }
     }
 }
-

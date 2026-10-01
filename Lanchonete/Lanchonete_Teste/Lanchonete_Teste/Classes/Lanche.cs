@@ -1,96 +1,98 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Threading;
 
 namespace Lanchonete_Teste.Classes
 {
     public class Lanche : ItemCardapio
     {
-        List<string> ingredientesExtras = new List<string>();
-        List<string> listaLanches = new List<string>();
+        private List<string> ingredientesExtras = new List<string>();
         public Lanche(int codigo, string descricao, decimal precoBase) :
             base(codigo, descricao, precoBase)
         {
-            ingredientesExtras = new List<string>();
-            listaLanches = new List<string> ();
         }
 
         public void MenuLanches()
         {
-            Console.WriteLine("1- X-Bacon");
-            Console.WriteLine("2- x-ovo");
-            Console.WriteLine("3- hamburguer");
-            Console.WriteLine("4- sair");
-            string inputOpcao = Console.ReadLine();
-
-            int.TryParse(inputOpcao, out int opcao);
-
-            listaLanches.Add(inputOpcao);
-
-            switch (opcao)
+            while (true)
             {
-                case 1:
-                    this.Descricao = "X-Bacon";
-                    this.PrecoBase = 18.00m;
-                    break;
-                case 2:
-                    this.Descricao = "X-Ovo";
-                    this.PrecoBase = 15.00m;
-                    break;
-                case 3:
-                    this.Descricao = "Hambúrguer";
-                    this.PrecoBase = 12.00m;
-                    break;
-                case 4:
-                    Console.WriteLine("Saindo do menu de lanches...");
-                    break;
-                default:
-                    Console.WriteLine("Opção inválida!");
-                    this.Descricao = "Hambúrguer";
-                    this.PrecoBase = 12.00m;
-                    break;
-            }
+                Console.Clear();
+                Console.WriteLine("1 - X-Bacon (R$ 18,00)");
+                Console.WriteLine("2 - X-Ovo (R$ 15,00)");
+                Console.WriteLine("3 - Hambúrguer (R$ 12,00)");
+                Console.Write("Escolha o lanche pelo numero: ");
 
-            Console.Write("Deseja adicionar algum ingrediente extra ou bebida?(extra/sair) ");
-            string resposta = Console.ReadLine();
-
-            
-
-            while(resposta == "extra")
-            {
-                Console.Write("Digite o ingrediente extra: ");
-                string ingredienteExtra = Console.ReadLine();
-                AdicionarExtra(ingredienteExtra);
-
-                
-
-                Console.Write("Deseja adicionar mais algum ingrediente extra? (extra/sair) ");
-                resposta = Console.ReadLine();
-
+                char opcao = Console.ReadKey(true).KeyChar;
+                switch (opcao)
+                {
+                    case '1':
+                        Descricao = "X-Bacon";
+                        PrecoBase = 18m;
+                        break;
+                    case '2':
+                        Descricao = "X-Ovo";
+                        PrecoBase = 15m;
+                        break;
+                    case '3':
+                        Descricao = "Hambúrguer";
+                        PrecoBase = 12m;
+                        break;
+                    default:
+                        Console.WriteLine("Tente novamente.");
+                        continue;
                 }
 
-            if (resposta == "sair")
-            {
-                Program.MenuPrincipal();
+                break;
             }
 
+            bool adicionarMais = true;
+            while (adicionarMais)
+            {
+                Console.Clear();
+                Console.WriteLine("Ingrediente extra - R$ 3,50 cada");
+                Console.WriteLine("1 - Queijo");
+                Console.WriteLine("2 - Bacon");
+                Console.WriteLine("3 - Ovo");
+                Console.WriteLine("0 - Continuar sem mais extras");
+                Console.Write("Escolha uma tecla: ");
+
+                char opcaoExtra = Console.ReadKey(true).KeyChar;
+                switch (opcaoExtra)
+                {
+                    case '1':
+                        AdicionarExtra("Queijo");
+                        Console.WriteLine("Queijo adicionado.");
+                        Thread.Sleep(2000);
+                        break;
+                    case '2':
+                        AdicionarExtra("Bacon");
+                        Console.WriteLine("Bacon adicionado.");
+                        Thread.Sleep(2000);
+                        break;
+                    case '3':
+                        AdicionarExtra("Ovo");
+                        Console.WriteLine("Ovo adicionado.");
+                        Thread.Sleep(2000);
+                        break;
+                    case '0':
+                        adicionarMais = false;
+                        break;
+                    default:
+                        Console.WriteLine("Opção inválida.");
+                        Thread.Sleep(2000);
+                        break;
+                }
+            }
         }
 
-
-        public void AdicionarExtra(string ingreditente)
+        public void AdicionarExtra(string ingrediente)
         {
-            ingredientesExtras.Add(ingreditente);
-
+            ingredientesExtras.Add(ingrediente);
         }
-
-
 
         public override decimal CalcularPrecoFinal()
         {
-            decimal valorExtra = ingredientesExtras.Count * 3.50m;
-            Console.WriteLine($"pedidos:");
-            Console.WriteLine($"preco lanche:{PrecoBase} || preco total extras: {valorExtra}");
-            return PrecoBase + valorExtra;
+            return PrecoBase + ingredientesExtras.Count * 3.50m;
         }
     }
 }

@@ -7,6 +7,6 @@ namespace Lanchonete_Teste.Interface
     public interface Ipagamento
     {
         
-        public string ObbterDescricaoPagamento();
+        string ObterDescricaoPagamento();
     }
 }

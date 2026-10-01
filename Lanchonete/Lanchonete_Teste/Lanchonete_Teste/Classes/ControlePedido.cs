@@ -1,65 +1,65 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Lanchonete_Teste.Classes
 {
     public class ControlePedido
     {
-        public List<ItemCardapio> itensPedido = new List<ItemCardapio>();
-
-        public ControlePedido()
-        {
-            itensPedido = new List<ItemCardapio>();
-        }
+        private List<ItemCardapio> itens = new List<ItemCardapio>();
 
         public void AdicionarPedido(ItemCardapio item)
         {
-            itensPedido.Add(item);
-            Console.WriteLine("item adicionado no carrinho");
+            if (item == null)
+            {
+                throw new Exception("O campo não pode estar vazio.");
+            }
+
+            itens.Add(item);
+        }
+
+        public decimal ObterTotal()
+        {
+            decimal total = 0m;
+            foreach (ItemCardapio item in itens)
+            {
+                total = total + item.CalcularPrecoFinal();
+            }
+
+            return total;
         }
 
         public void FecharPedido()
         {
-            Console.Clear();
+            decimal total = 0m;
 
-            Console.WriteLine("=============================================");
-            Console.WriteLine("                 NOTA FISCAL                 ");
-            Console.WriteLine("=============================================");
-            Console.WriteLine(String.Format("{0,-30} | {1}", "PRODUTO", "PREÇO"));
-            Console.WriteLine("---------------------------------------------");
-
-            decimal totalGeral = 0;
-
-            
-            foreach (var item in itensPedido)
+            Console.WriteLine("\n============== RESUMO DO PEDIDO ==============");
+            if (itens.Count == 0)
             {
-                decimal precoItem = item.CalcularPrecoFinal();
-                totalGeral += precoItem;
-
-                string nomeProduto = item.Descricao;
-
-                
-                if (item is Bebida bebida)
-                {
-                    nomeProduto += $" ({bebida.Tamanho})";
-                }
-
-                
-                Console.WriteLine( $"Nome: {nomeProduto} {precoItem}");
-
-                Console.WriteLine("=============================");
-                Console.WriteLine( "TOTAL A PAGAR", totalGeral);
-                Console.WriteLine("=============================\n");
-
-                
-                Console.WriteLine("Pressione qualquer tecla para continuar...");
-                Console.ReadKey();
-                Console.Clear();
-                Program.MenuPrincipal();
+                Console.WriteLine("Nenhum item no pedido.");
             }
 
+            foreach (ItemCardapio item in itens)
+            {
+                string descricao = item.Descricao;
+                if (item is Bebida)
+                {
+                    Bebida bebida = (Bebida)item;
+                    descricao = descricao + " (" + bebida.Tamanho + ")";
+                }
 
+                decimal preco = item.CalcularPrecoFinal();
+                Console.WriteLine(descricao + ": " + preco.ToString("C2"));
+                total = total + preco;
+            }
+
+            Console.WriteLine("----------------------------------------------");
+            Console.WriteLine("TOTAL A PAGAR: " + total.ToString("C2"));
+            Console.WriteLine("==============================================\n");
+        }
+
+        public void Limpar()
+        {
+            itens.Clear();
         }
     }
 }

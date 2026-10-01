@@ -1,13 +1,11 @@
 ﻿using Lanchonete_Teste.Interface;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Lanchonete_Teste.Classes
 {
     public class Pagamento : Ipagamento
     {
-        public string FormaPagamento { get; set; }
+        public string FormaPagamento { get; private set; } = string.Empty;
         public decimal ValorTotal { get; set; }
 
         public Pagamento(decimal valorTotal)
@@ -17,37 +15,47 @@ namespace Lanchonete_Teste.Classes
 
         public void ProcessarPagamento()
         {
-            Console.WriteLine("\n===========================");
-            Console.WriteLine("        PAGAMENTO");
-            Console.WriteLine("===========================");
-            Console.WriteLine($"Valor total da conta: {ValorTotal}");
-            Console.WriteLine("Aviso: Só aceitamos Débito ou Crédito.");
-
             bool pagamentoAprovado = false;
 
             while (!pagamentoAprovado)
             {
-                Console.Write("\nDigite a forma de pagamento (debito / credito): ");
-                FormaPagamento = Console.ReadLine();
-                if (ValidarPagamento())
+                Console.Clear();
+                Console.WriteLine("============== PAGAMENTO ==============");
+                Console.WriteLine("Valor total: " + ValorTotal.ToString("C2"));
+                Console.WriteLine("1 - Débito");
+                Console.WriteLine("2 - Crédito");
+                Console.Write("Escolha uma tecla: ");
+
+                char opcao = Console.ReadKey(true).KeyChar;
+                if (opcao == '1')
                 {
-                    Console.WriteLine($"\n> Sucesso! Pagamento de {ValorTotal:F2} aprovado.");
-                    Console.WriteLine(ObbterDescricaoPagamento());
-                    pagamentoAprovado = true; 
+                    FormaPagamento = "Débito";
+                }
+                else if (opcao == '2')
+                {
+                    FormaPagamento = "Crédito";
                 }
                 else
                 {
-                    Console.WriteLine("> ERRO: Forma de pagamento recusada. Tente novamente.");
+                    Console.WriteLine("Aperte qualquer tecla para tentar novamente.");
+                    Console.ReadKey(true);
+                    continue;
+                }
+
+                if (ValidarPagamento())
+                {
+                    Console.WriteLine("Pagamento de " + ValorTotal.ToString("C2") + " aprovado.");
+                    Console.WriteLine(ObterDescricaoPagamento());
+                    pagamentoAprovado = true; 
+                    Console.WriteLine("Aperte qualquer tecla para voltar ao menu.");
+                    Console.ReadKey(true);
                 }
             }
         }
 
-        public bool ValidarPagamento()
+        private bool ValidarPagamento()
         {
-
-            
-            if (FormaPagamento == "debito" || FormaPagamento == "débito" ||
-                FormaPagamento == "credito" || FormaPagamento == "crédito")
+            if (FormaPagamento == "Débito" || FormaPagamento == "Crédito")
             {
                 return true;
             }
@@ -55,10 +63,9 @@ namespace Lanchonete_Teste.Classes
             return false;
         }
 
-
-        public string ObbterDescricaoPagamento()
+        public string ObterDescricaoPagamento()
         {
-            return $"Pagamento finalizado na modalidade: {FormaPagamento.ToUpper()}.";
+            return "Pagamento finalizado na modalidade: " + FormaPagamento + ".";
         }
     }
 }
